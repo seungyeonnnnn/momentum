@@ -1,50 +1,46 @@
 const h1 = document.getElementById("ti");
 document.getElementById("ti").textContent = "Changed!";
 
+// // CSS에 정의하는게 아니라 JS에서 속성을 추가 (Bad)
+// function handleTitleClick(){
+//     const currentColor = h1.style.color;
+//     let newColor;
+//     if(currentColor === "blue"){
+//         newColor = "tomato";
+//     } else{
+//         newColor = "blue";
+//     }
+//     h1.style.color = newColor;
+// }
+// h1.addEventListener("click", handleTitleClick);
+
+// //CSS에 정의하고 class를 추가하는데, h1.className을 하면 다른 class를 update. (bug)
+// //class 추가가 필요함
+// function handleTitleClick(){
+//     const clickedClass = "clicked"
+//     if (h1.className === clickedClass){
+//         h1.className = "";
+//     } else {
+//         h1.className = clickedClass;
+//     }
+    
+// }
+// h1.addEventListener("click", handleTitleClick);
+
+// //classList를 써서 다른 class에는 영향이 없도록 수정
+// //class를 추가 삭제하는건 자주하기 때문에 아래 toggle로 수정 필요
+// function handleTitleClick(){
+//     const clickedClass = "clicked"
+//     if (h1.classList.contains(clickedClass)){
+//         h1.classList.remove(clickedClass);
+//     } else {
+//         h1.classList.add(clickedClass);
+//     }
+// }
+// h1.addEventListener("click", handleTitleClick);
+
+//toggle 활용 한줄이라 const정의도 불필요
 function handleTitleClick(){
-    h1.innerText = "Got you!";
-    h1.style.color = "blue";
+    h1.classList.toggle("clicked");
 }
-
-function handleMouseEnter(){
-    h1.style.color = "red";
-}
-
-function handleMouseLeave(){
-    h1.style.color = "gray";
-}
-
-function handleWindowResize(){
-    document.body.style.backgroundColor = "tomato";
-}
-
-function handleWindowCopy(){
-    alert("copier!");
-}
-
-function handleWindowOffline(){
-    alert("SOS no WIFI");
-}
-
-function handleWindowOnline(){
-    alert("All Good");
-}
-
 h1.addEventListener("click", handleTitleClick);
-h1.addEventListener("mouseenter", handleMouseEnter);
-h1.addEventListener("mouseleave", handleMouseLeave);
-
-const hellos = document.getElementsByClassName("hello");
-console.log(hellos);
-
-const grab = document.getElementsByTagName("h3");
-console.log(grab);
-
-const grab2 = document.querySelector(".hello2 h3:last-child"); // CSS와 syntax 동일. 이거 쓰면 됨.
-//querySelectorAll은 전체 다 array로 querySelector는 맨 앞에 하나만
-console.log(grab2);
-
-window.addEventListener("resize", handleWindowResize);
-window.addEventListener("copy", handleWindowCopy);
-window.addEventListener("offline", handleWindowOffline);
-window.addEventListener("online", handleWindowOnline);
